@@ -1,19 +1,14 @@
 package local.work.panels;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class DisplayArea extends JPanel{
     private static JLabel label;
 
     public DisplayArea() {
         DisplayArea.label = new JLabel("Display Area");
-        Dimension d = new Dimension(700, 200);
 
         this.add(label);
-//        label.setAlignmentY(0.5f);
-        label.setPreferredSize(d);
-
-        this.setBackground(new Color(85, 170, 0));
+        label.setAlignmentY(0.5f);
     }
 }

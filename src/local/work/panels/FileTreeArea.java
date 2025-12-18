@@ -8,12 +8,8 @@ public class FileTreeArea extends JPanel{
 
     public FileTreeArea() {
         FileTreeArea.label = new JLabel("File Tree Area");
-        Dimension d = new Dimension(100, 200);
 
         this.add(label);
-//        label.setAlignmentY(0f);
-        label.setPreferredSize(d);
-
-        this.setBackground(new Color(140, 71, 170));
+        label.setAlignmentY(0f);
     }
 }
