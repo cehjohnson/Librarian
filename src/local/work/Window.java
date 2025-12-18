@@ -16,16 +16,40 @@ public class Window extends JPanel{
     private static PropertiesArea propertiesArea;
 
     public Window() {
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.weightx = 0.5;
+        gbc.anchor = GridBagConstraints.NORTHWEST;
+
         Window.toolbar = new Toolbar();
-        Window.displayArea = new DisplayArea();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 4;
+        gbc.gridheight = 1;
+        this.add(toolbar, gbc);
+
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+
         Window.fileTreeArea = new FileTreeArea();
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 2;
+        this.add(fileTreeArea, gbc);
+
         Window.propertiesArea = new PropertiesArea();
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.gridwidth = 4;
+        gbc.gridheight = 1;
+        this.add(propertiesArea, gbc);
 
-        this.setLayout(new BorderLayout());
-
-        this.add(toolbar, BorderLayout.NORTH);
-        this.add(displayArea, BorderLayout.EAST);
-        this.add(fileTreeArea, BorderLayout.WEST);
-        this.add(propertiesArea, BorderLayout.SOUTH);
+        Window.displayArea = new DisplayArea();
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.gridwidth = 3;
+        gbc.gridheight = 2;
+        this.add(displayArea, gbc);
     }
 }
