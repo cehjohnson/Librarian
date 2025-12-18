@@ -8,9 +8,11 @@ public class DisplayArea extends JPanel{
 
     public DisplayArea() {
         DisplayArea.label = new JLabel("Display Area");
+        Dimension d = new Dimension(700, 200);
 
         this.add(label);
-        label.setAlignmentY(0.5f);
+//        label.setAlignmentY(0.5f);
+        label.setPreferredSize(d);
 
         this.setBackground(new Color(85, 170, 0));
     }

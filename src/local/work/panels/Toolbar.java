@@ -8,11 +8,11 @@ public class Toolbar extends JPanel{
     private static Dimension d;
 
     public Toolbar() {
-        Toolbar.d = new Dimension(500, 25);
+        Toolbar.d = new Dimension(500, 100);
         Toolbar.addressBar = new JTextField();
         addressBar.setPreferredSize(d);
 
         this.add(addressBar);
-        addressBar.setAlignmentY(0.25f);
+//        addressBar.setAlignmentY(0f);
     }
 }
