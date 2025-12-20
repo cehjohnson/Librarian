@@ -6,6 +6,14 @@ import java.awt.*;
 public class PropertiesArea extends JPanel {
     private static JLabel label;
 
+    public static JLabel getLabel() {
+        return label;
+    }
+
+    public static void setLabel(JLabel label) {
+        PropertiesArea.label = label;
+    }
+
     public PropertiesArea() {
         PropertiesArea.label = new JLabel("Properties Area");
 

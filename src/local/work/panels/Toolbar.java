@@ -7,6 +7,14 @@ public class Toolbar extends JPanel{
     private static JTextField addressBar;
     private static Dimension d;
 
+    public static JTextField getAddressBar() {
+        return addressBar;
+    }
+
+    public static void setAddressBar(JTextField addressBar) {
+        Toolbar.addressBar = addressBar;
+    }
+
     public Toolbar() {
         Toolbar.d = new Dimension(500, 25);
         Toolbar.addressBar = new JTextField();
