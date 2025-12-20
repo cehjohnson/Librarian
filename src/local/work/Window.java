@@ -7,6 +7,7 @@ import local.work.panels.Toolbar;
 
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.border.Border;
 
 public class Window extends JPanel{
 
@@ -16,6 +17,13 @@ public class Window extends JPanel{
     private static PropertiesArea propertiesArea;
 
     public Window() {
+        JPanel[] panels = {
+                Window.toolbar = new Toolbar(),
+                Window.fileTreeArea = new FileTreeArea(),
+                Window.displayArea = new DisplayArea(),
+                Window.propertiesArea = new PropertiesArea()
+        };
+        Border border = BorderFactory.createLineBorder(Color.DARK_GRAY);
         int[] rh = {125, 125, 125, 125, 125};
         int[] cw = {200, 200, 200, 200};
         GridBagLayout layout = new GridBagLayout();
@@ -30,7 +38,6 @@ public class Window extends JPanel{
         of space.
          */
 
-        Window.toolbar = new Toolbar();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 4;
@@ -41,25 +48,26 @@ public class Window extends JPanel{
         gbc.weighty = 1;
         gbc.anchor = GridBagConstraints.NORTHWEST;
 
-        Window.fileTreeArea = new FileTreeArea();
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
         gbc.gridheight = 3;
         this.add(fileTreeArea, gbc);
 
-        Window.displayArea = new DisplayArea();
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.gridwidth = 3;
         gbc.gridheight = 3;
         this.add(displayArea, gbc);
 
-        Window.propertiesArea = new PropertiesArea();
         gbc.gridx = 0;
         gbc.gridy = 4;
         gbc.gridwidth = 4;
         gbc.gridheight = 1;
         this.add(propertiesArea, gbc);
+
+        for (JPanel panel: panels) {
+            panel.setBorder(border);
+        }
     }
 }
