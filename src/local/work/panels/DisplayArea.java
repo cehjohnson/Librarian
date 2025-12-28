@@ -15,8 +15,10 @@ public class DisplayArea extends JPanel implements BrainClient{
         label.setText(t);
     }
 
+    @Override
     public void update() {}
 
+    @Override
     public void update(String u) {
         setLabel(u);
     }

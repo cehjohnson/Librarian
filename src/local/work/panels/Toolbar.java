@@ -16,8 +16,10 @@ public class Toolbar extends JPanel implements BrainClient {
         addressBar.setText(t);
     }
 
+    @Override
    public void update() {}
 
+    @Override
     public void update(String u) {
         setAddressBar(u);
     }
