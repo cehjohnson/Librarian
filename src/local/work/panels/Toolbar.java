@@ -40,6 +40,7 @@ public class Toolbar extends JPanel implements BrainClient, ActionListener {
         else if (e.getSource() == rootBtn) {
             brain.publish(brain.getRootDir());
         }
+        // Implement a Java "Stack" reference type here to add functionality to the back button.
     }
 
     @Override
