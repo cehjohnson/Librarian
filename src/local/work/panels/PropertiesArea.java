@@ -20,7 +20,6 @@ public class PropertiesArea extends JPanel implements BrainClient{
     @Override
     public void setBrain(Brain brain) {
         this.brain = brain;
-        System.out.println("PropertiesArea recognizes Brain!");
     }
 
     @Override
@@ -37,6 +36,6 @@ public class PropertiesArea extends JPanel implements BrainClient{
 
         label.setAlignmentY(0.5f);
         this.add(label);
-        this.setBackground(Color.BLUE);
+        this.setBackground(Color.LIGHT_GRAY);
     }
 }

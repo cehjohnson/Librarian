@@ -19,7 +19,6 @@ public class DisplayArea extends JPanel implements BrainClient{
     @Override
     public void setBrain(Brain brain) {
         this.brain = brain;
-        System.out.println("DisplayArea recognizes Brain!");
     }
 
     @Override

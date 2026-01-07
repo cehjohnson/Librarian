@@ -13,10 +13,10 @@ public class Brain {
     private static String rootDir;
     private static JPanel[] panels;
 
-    public void publish(JPanel @NotNull [] panels) {
+    public void publish(String string) {
         for (JPanel panel : panels) {
             if (panel instanceof BrainClient) {
-                ((BrainClient) panel).update(getRootDir());
+                ((BrainClient) panel).update(string);
                 ((BrainClient) panel).setBrain(this);
             }
         }
@@ -27,8 +27,9 @@ public class Brain {
     }
 
     public Brain(JPanel[] panels) {
+        this.panels = panels;
         fileSystem = FileSystems.getDefault();
         rootDir = String.valueOf('/'); // Change this logic if extending this application to Windows or Mac.
-        publish(panels);
+        publish(rootDir);
     }
 }
