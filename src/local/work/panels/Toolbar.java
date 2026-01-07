@@ -1,13 +1,16 @@
 package local.work.panels;
 
 import local.work.Brain;
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Toolbar extends JPanel implements BrainClient, ActionListener {
-    private static JButton button;
+    private static JButton homeBtn;
+    private static ImageIcon homeIcon;
     private static JTextField addressBar;
     private static Brain brain;
     private static Dimension d;
@@ -29,7 +32,7 @@ public class Toolbar extends JPanel implements BrainClient, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = getSendInfo();
-        if (e.getSource() == button) {
+        if (e.getSource() == homeBtn) {
             brain.publish(s);
         }
     }
@@ -47,15 +50,25 @@ public class Toolbar extends JPanel implements BrainClient, ActionListener {
         setAddressBar(u);
     }
 
+    private @NotNull ImageIcon setIconSize(ImageIcon icon) {
+        Image img = icon.getImage();
+        Image resizedImg = img.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
+        return new ImageIcon(resizedImg);
+    }
+
     public Toolbar() {
         super();
-        Toolbar.button = new JButton("Click Me!");
-        Toolbar.button.addActionListener(this);
+
+        Toolbar.homeIcon = new ImageIcon(getClass().getResource("../../../resources/home-2504.png"));
+        Toolbar.homeBtn = new JButton(Toolbar.homeIcon);
+        Toolbar.homeBtn.setPreferredSize(Toolbar.iconSize);
+        Toolbar.homeBtn.addActionListener(this);
+
         Toolbar.d = new Dimension(500, 25);
         Toolbar.addressBar = new JTextField();
         addressBar.setPreferredSize(d);
 
-        this.add(button);
+        this.add(homeBtn);
         this.add(addressBar);
         this.setBackground(Color.RED);
     }
