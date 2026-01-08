@@ -28,11 +28,15 @@ public class Brain {
     }
 
     public void getBack() {
-        if (history.peek() != null) {
+        if (history.empty()) {
+        System.out.println("Stack empty!");
+        // In future, replace terminal println with window in message
+        }
+        else if (history.peek() != null && !history.empty()) {
             String backElement = history.pop();
             this.publish(backElement);
         }
-        else {
+        else if (history.peek() == null && !history.empty()) {
             this.publish(rootDir);
         }
     }
