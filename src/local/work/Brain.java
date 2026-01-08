@@ -39,13 +39,8 @@ public class Brain {
     }
 
     public void getBack() {
-        if (history.peek() != null && !history.empty()) {
-            String backElement = history.pop();
-            this.publish(backElement);
-        }
-        else if (history.peek() == null && !history.empty()) {
-            this.publish(rootDir);
-        }
+        String backElement = history.pop();
+        this.publish(backElement);
     }
 
     public String getRootDir() {
