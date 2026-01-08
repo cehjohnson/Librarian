@@ -19,6 +19,12 @@ public class Brain {
     private static boolean caller;
 
     public void publish(String string) {
+        if (history.empty() || history.peek() == null) {
+            window.getToolbar().getBackBtn().setEnabled(false);
+        }
+        else {
+            window.getToolbar().getBackBtn().setEnabled(true);
+        }
         currentLocation = string;
         for (JPanel panel : panels) {
             if (panel instanceof BrainClient) {
