@@ -36,9 +36,11 @@ public class FileTreeArea extends JPanel implements BrainClient, LabelHander {
 
    @Override
    public void handleLabel(JLabel label) {
-        this.add(label, BorderLayout.AFTER_LAST_LINE);
-        this.revalidate();
-        this.repaint();
+        SwingUtilities.invokeLater(() -> {
+            this.add(label, BorderLayout.NORTH);
+            this.revalidate();
+            this.repaint();
+        });
    }
 
     @Override
