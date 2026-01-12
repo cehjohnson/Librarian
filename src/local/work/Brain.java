@@ -24,9 +24,6 @@ public class Brain {
         Path filepath = Paths.get(path);
         if (Files.exists(filepath) && Files.isDirectory(filepath)) {
             try (DirectoryStream<Path> stream = Files.newDirectoryStream(filepath)) {
-                for (Path entry : stream) {
-                    System.out.println(entry.getFileName());
-                }
                 return stream;
             }
             catch (Exception e) {

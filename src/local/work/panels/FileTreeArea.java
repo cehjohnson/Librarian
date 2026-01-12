@@ -26,9 +26,6 @@ public class FileTreeArea extends JPanel implements BrainClient, LabelHander {
         this.brain = brain;
     }
 
-    @Override
-    public void update() {}
-
    public void start() {
        TreeStreamParser parser = new TreeStreamParser(brain.getContents(), this);
        parser.execute();
@@ -37,11 +34,14 @@ public class FileTreeArea extends JPanel implements BrainClient, LabelHander {
    @Override
    public void handleLabel(JLabel label) {
         SwingUtilities.invokeLater(() -> {
-            this.add(label, BorderLayout.NORTH);
+            this.add(label);
             this.revalidate();
             this.repaint();
         });
    }
+
+    @Override
+    public void update() {}
 
     @Override
     public void update(String u) {
@@ -50,10 +50,10 @@ public class FileTreeArea extends JPanel implements BrainClient, LabelHander {
     }
 
     public FileTreeArea() {
-        this.setLayout(new BorderLayout());
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setBackground(Color.YELLOW);
         this.label = new JLabel("File Tree Area");
 
-        this.add(label, BorderLayout.NORTH);
+        this.add(label);
     }
 }
