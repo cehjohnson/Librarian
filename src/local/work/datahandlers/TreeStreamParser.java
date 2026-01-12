@@ -33,7 +33,8 @@ public class TreeStreamParser extends SwingWorker<Void, Path> {
     @Override
     protected void process(@NotNull List<Path> chunks) {
         Path p = chunks.get(chunks.size() - 1);
-        JLabel hyperable = new JLabel();
-        hyperable.setText(p.getFileName().toString());
+        JLabel hyperable = new JLabel(p.getFileName().toString());
+//        hyperable.setText(p.getFileName().toString());
+        handler.handleLabel(hyperable);
     }
 }
