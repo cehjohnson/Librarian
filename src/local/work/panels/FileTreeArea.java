@@ -1,6 +1,7 @@
 package local.work.panels;
 
 import local.work.Brain;
+import local.work.datahandlers.LabelHander;
 import local.work.datahandlers.TreeStreamParser;
 
 import javax.swing.*;
@@ -8,7 +9,7 @@ import java.awt.*;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Path;
 
-public class FileTreeArea extends JPanel implements BrainClient {
+public class FileTreeArea extends JPanel implements BrainClient, LabelHander {
     private static JLabel label;
     private static Brain brain;
 
@@ -28,22 +29,22 @@ public class FileTreeArea extends JPanel implements BrainClient {
     @Override
     public void update() {}
 
-    private void start() {
-        TreeStreamParser parser = new TreeStreamParser(brain.getContents()) {
+   public void start() {
+       TreeStreamParser parser = new TreeStreamParser(brain.getContents(), this);
+       parser.execute();
+   }
 
-            @Override
-            protected void done() {
-                try {
-                    
-                }
-            }
-        }
-    }
+   @Override
+   public void handleLabel(JLabel label) {
+        this.add(label, BorderLayout.AFTER_LAST_LINE);
+        this.revalidate();
+        this.repaint();
+   }
 
     @Override
     public void update(String u) {
         setLabel(u);
-
+        start();
     }
 
     public FileTreeArea() {

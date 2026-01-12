@@ -13,10 +13,13 @@ import java.util.List;
 public class TreeStreamParser extends SwingWorker<Void, Path> {
 
     private DirectoryStream<Path> ds;
+    private LabelHander handler;
 
-    public TreeStreamParser(DirectoryStream<Path> ds) {
+    public TreeStreamParser(DirectoryStream<Path> ds, LabelHander handler) {
 
         this.ds = ds;
+        this.handler = handler;
+
     }
 
     @Override
@@ -32,5 +35,6 @@ public class TreeStreamParser extends SwingWorker<Void, Path> {
         Path p = chunks.get(chunks.size() - 1);
         JLabel hyperable = new JLabel();
         hyperable.setText(p.getFileName().toString());
+        handler.handleLabel(hyperable);
     }
 }
