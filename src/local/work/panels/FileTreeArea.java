@@ -55,7 +55,6 @@ public class FileTreeArea extends JPanel implements BrainClient, LabelHander {
         this.removeAll();
         this.label = new JLabel(u);
         this.add(label);
-//        setLabel(u);
         start();
     }
 
