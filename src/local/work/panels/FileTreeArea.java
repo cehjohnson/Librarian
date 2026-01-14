@@ -1,16 +1,15 @@
 package local.work.panels;
 
 import local.work.Brain;
-import local.work.datahandlers.LabelHander;
+import local.work.datahandlers.WorkerOutputHandler;
 import local.work.datahandlers.TreeStreamParser;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Path;
 
-public class FileTreeArea extends JPanel implements BrainClient, LabelHander {
+public class FileTreeArea extends JPanel implements BrainClient, WorkerOutputHandler {
     private static JLabel label;
     private static Brain brain;
 

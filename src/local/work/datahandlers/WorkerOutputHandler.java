@@ -2,6 +2,6 @@ package local.work.datahandlers;
 
 import javax.swing.*;
 
-public interface LabelHander {
+public interface WorkerOutputHandler {
     void handleParserOutput(JComponent scrollPane);
 }

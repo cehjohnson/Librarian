@@ -13,9 +13,9 @@ import java.util.List;
 public class TreeStreamParser extends SwingWorker<Void, Path> {
 
     private DirectoryStream<Path> ds;
-    private LabelHander handler;
+    private WorkerOutputHandler handler;
 
-    public TreeStreamParser(DirectoryStream<Path> ds, LabelHander handler) {
+    public TreeStreamParser(DirectoryStream<Path> ds, WorkerOutputHandler handler) {
 
         this.ds = ds;
         this.handler = handler;
