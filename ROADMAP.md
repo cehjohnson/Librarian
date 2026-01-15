@@ -10,8 +10,3 @@ publish whatever it's current location is. The only exception to this rule shoul
 *The Display area does not have any permissions to trigger any event *within* the application,
 but it does have permission to ask the OS to open the targeted file when the user triggers an event inside of said
 Display area.
-
-*TODO: Focus on making directory names in FileTreeArea clickable.
-
-*TODO: When user clicks on a directory name in FileTreeArea occurs, trigger a send of the DirectoryNameAsString to the brain.
-Trigger update cycle with new DirectoryNameAsString.
