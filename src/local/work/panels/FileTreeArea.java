@@ -12,6 +12,8 @@ import java.nio.file.Path;
 public class FileTreeArea extends JPanel implements BrainClient, WorkerOutputHandler {
     private static JLabel label;
     private static Brain brain;
+    private static GroupLayout layout;
+    private static GroupLayout.SequentialGroup group;
 
     public static JLabel getLabel() {
         return label;
@@ -40,7 +42,7 @@ public class FileTreeArea extends JPanel implements BrainClient, WorkerOutputHan
    @Override
    public void handleParserOutput(JComponent c) {
         SwingUtilities.invokeLater(() -> {
-            this.add(c);
+            group.addComponent(c);
             this.revalidate();
             this.repaint();
         });
@@ -52,20 +54,20 @@ public class FileTreeArea extends JPanel implements BrainClient, WorkerOutputHan
     @Override
     public void update(String u) {
         this.removeAll();
-        this.setLayout(new FlowLayout(FlowLayout.LEADING, 0, 0));
+        this.layout = new GroupLayout(this);
+        this.group = layout.createSequentialGroup();
+        layout.setAutoCreateGaps(true);
+        layout.setAutoCreateContainerGaps(true);
+        this.label = new JLabel();
+        label.setHorizontalAlignment(SwingConstants.LEFT);
         setLabel("Look in:   " + u);
-//        label.setPreferredSize(new Dimension(Integer.MAX_VALUE, 25));
-        System.out.println(label.getBounds());
-        this.add(label);
+
+        group.addComponent(label);
         start();
     }
 
     public FileTreeArea() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setBackground(Color.YELLOW);
-        this.label = new JLabel("File Tree Area");
-        label.setHorizontalAlignment(JLabel.LEFT);
-
-        this.add(label);
     }
 }
