@@ -38,8 +38,16 @@ public class Brain {
     }
 
     public void publish(String string) {
-        setBackButtonState();
         setCurrentLocation(string);
+        if (history.empty()) {
+            history.push(currentLocation);
+        }
+        if (!history.peek().equals(currentLocation)) {
+            System.out.println("last= " + history.peek());
+            System.out.println("now= " + currentLocation);
+            history.push(currentLocation);
+        }
+        setBackButtonState();
         this.contents = breakdownDirectory(string);
         for (JPanel panel : panels) {
             if (panel instanceof BrainClient) {
@@ -49,7 +57,7 @@ public class Brain {
     }
 
     private static void setBackButtonState() {
-        if (history.empty() || history.peek() == null) {
+        if (history.size() <= 1) {
             window.getToolbar().getBackBtn().setEnabled(false);
         }
         else {
@@ -58,8 +66,11 @@ public class Brain {
     }
 
     public void getBack() {
-        String backElement = history.pop();
-        this.publish(backElement);
+        if (history.size() > 1) {
+            history.pop();
+            String backElement = history.pop();
+            this.publish(backElement);
+        }
     }
 
     public String getRootDir() {
