@@ -21,11 +21,21 @@ public class FileTreeArea extends JPanel implements BrainClient, ActionListener,
     @Override
     public void actionPerformed(@NotNull ActionEvent ae) {
         String toBePassed = ae.getActionCommand();
-        try {
-            brain.publish(brain.getCurrentLocation() + toBePassed);
+        if (brain.getCurrentLocation().equals(brain.getRootDir())) {
+            try {
+                brain.publish(brain.getCurrentLocation() + toBePassed);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        catch (Exception e) {
-            e.printStackTrace();
+        else {
+            try {
+                brain.publish(brain.getCurrentLocation() + '/' + toBePassed);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

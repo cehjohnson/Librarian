@@ -43,8 +43,6 @@ public class Brain {
             history.push(currentLocation);
         }
         if (!history.peek().equals(currentLocation)) {
-            System.out.println("last= " + history.peek());
-            System.out.println("now= " + currentLocation);
             history.push(currentLocation);
         }
         setBackButtonState();
