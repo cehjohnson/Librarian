@@ -10,9 +10,11 @@ import java.awt.event.ActionListener;
 
 public class Toolbar extends JPanel implements BrainClient, ActionListener {
     private static JButton homeBtn;
+    private static JButton refreshBtn;
     private static JButton rootBtn;
     private static JButton backBtn;
     private static ImageIcon homeIcon;
+    private static ImageIcon refreshIcon;
     private static ImageIcon rootIcon;
     private static ImageIcon backIcon;
     private static JTextField addressBar;
@@ -47,6 +49,9 @@ public class Toolbar extends JPanel implements BrainClient, ActionListener {
         else if (e.getSource() == backBtn) {
             brain.getBack();
         }
+        else if (e.getSource() == refreshBtn) {
+            brain.refresh();
+        }
     }
 
     @Override
@@ -59,7 +64,7 @@ public class Toolbar extends JPanel implements BrainClient, ActionListener {
 
     private @NotNull ImageIcon setIconSize(@NotNull ImageIcon icon) {
         Image img = icon.getImage();
-        Image resizedImg = img.getScaledInstance(24, 24, Image.SCALE_SMOOTH);
+        Image resizedImg = img.getScaledInstance(32, 32, Image.SCALE_SMOOTH);
         return new ImageIcon(resizedImg);
     }
 
@@ -69,13 +74,19 @@ public class Toolbar extends JPanel implements BrainClient, ActionListener {
 
     public Toolbar() {
         super();
-        Toolbar.iconSize = new Dimension(25, 25);
+        Toolbar.iconSize = new Dimension(32, 32);
 
         Toolbar.homeIcon = new ImageIcon(getClass().getResource("../../../resources/home-2504.png"));
         Toolbar.homeIcon = setIconSize(Toolbar.homeIcon);
         Toolbar.homeBtn = new JButton(Toolbar.homeIcon);
         Toolbar.homeBtn.setPreferredSize(Toolbar.iconSize);
         Toolbar.homeBtn.addActionListener(this);
+
+        Toolbar.refreshIcon = new ImageIcon(getClass().getResource("../../../resources/recycle.png"));
+        Toolbar.refreshIcon = setIconSize(Toolbar.refreshIcon);
+        Toolbar.refreshBtn = new JButton(Toolbar.refreshIcon);
+        Toolbar.refreshBtn.setPreferredSize(Toolbar.iconSize);
+        Toolbar.refreshBtn.addActionListener(this);
 
         Toolbar.rootIcon = new ImageIcon(getClass().getResource("../../../resources/admin-9580.png"));
         Toolbar.rootIcon = setIconSize(Toolbar.rootIcon);
@@ -90,11 +101,12 @@ public class Toolbar extends JPanel implements BrainClient, ActionListener {
         Toolbar.backBtn.addActionListener(this);
 
 
-        Toolbar.d = new Dimension(500, 25);
+        Toolbar.d = new Dimension(500, 32);
         Toolbar.addressBar = new JTextField();
         addressBar.setPreferredSize(d);
 
         this.add(backBtn);
+        this.add(refreshBtn);
         this.add(rootBtn);
         this.add(homeBtn);
         this.add(addressBar);

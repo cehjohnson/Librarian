@@ -54,6 +54,11 @@ public class Brain {
         }
     }
 
+    public void refresh() {
+        String peekValue = history.peek();
+        publish(peekValue);
+    }
+
     private static void setBackButtonState() {
         if (history.size() <= 1) {
             window.getToolbar().getBackBtn().setEnabled(false);
