@@ -16,7 +16,8 @@ public class FileTreeArea extends JPanel implements BrainClient, ActionListener,
     private static JLabel label;
     private static Brain brain;
     private static GroupLayout layout;
-    private static GroupLayout.SequentialGroup group;
+    private static GroupLayout.ParallelGroup hgroup;
+    private static GroupLayout.SequentialGroup vgroup;
 
     @Override
     public void actionPerformed(@NotNull ActionEvent ae) {
@@ -46,7 +47,18 @@ public class FileTreeArea extends JPanel implements BrainClient, ActionListener,
     @Override
     public void handleParserOutput(JComponent c) {
         SwingUtilities.invokeLater(() -> {
-            group.addComponent(c);
+            this.layout = new GroupLayout(this);
+            this.setLayout(layout);
+            layout.setAutoCreateGaps(true);
+            layout.setAutoCreateContainerGaps(true);
+            this.hgroup = layout.createParallelGroup();
+            this.vgroup = layout.createSequentialGroup();
+            hgroup.addGroup(layout.createParallelGroup().addComponent(label));
+            hgroup.addGroup(layout.createParallelGroup().addComponent(c));
+            vgroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(label));
+            vgroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(c));
+            layout.setHorizontalGroup(hgroup);
+            layout.setVerticalGroup(vgroup);
             this.revalidate();
             this.repaint();
         });
@@ -78,22 +90,15 @@ public class FileTreeArea extends JPanel implements BrainClient, ActionListener,
     @Override
     public void update(String u) {
         this.removeAll();
-        this.layout = new GroupLayout(this);
-        this.group = layout.createSequentialGroup();
-        layout.setAutoCreateGaps(true);
-        layout.setAutoCreateContainerGaps(true);
-        this.label = new JLabel();
         ImageIcon icon = new ImageIcon("src/resources/open-folder.png");
+        this.label = new JLabel(u);
         label.setIcon(icon);
         label.setHorizontalAlignment(SwingConstants.LEFT);
-        setLabel(u);
 
-        group.addComponent(label);
         start();
     }
 
     public FileTreeArea() {
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setBackground(Color.YELLOW);
     }
 }
