@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
@@ -44,13 +45,15 @@ public class TreeStreamParser extends SwingWorker<Void, Path> {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         for (Path p : chunks) {
-            JButton hyperable = new JButton(p.getFileName().toString());
-            ImageIcon icon = new ImageIcon("src/resources/close-folder.png");
-            hyperable.setIcon(icon);
-            hyperable.setMargin(m);
-            hyperable.setActionCommand(p.getFileName().toString());
-            hyperable.addActionListener(listener);
-            panel.add(hyperable);
+            if (Files.isDirectory(p)) {
+                JButton hyperable = new JButton(p.getFileName().toString());
+                ImageIcon icon = new ImageIcon("src/resources/close-folder.png");
+                hyperable.setIcon(icon);
+                hyperable.setMargin(m);
+                hyperable.setActionCommand(p.getFileName().toString());
+                hyperable.addActionListener(listener);
+                panel.add(hyperable);
+            }
         }
         JScrollPane scrollPane = new JScrollPane(
                 panel,

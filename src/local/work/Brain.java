@@ -8,6 +8,7 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class Brain {
@@ -18,6 +19,8 @@ public class Brain {
     private static JPanel[] panels;
     public static Stack<String> history;
     private DirectoryStream<Path> contents;
+    private ArrayList<Path> contentFiles;
+    private ArrayList<Path> contentDirectories;
     private static boolean caller;
 
     public DirectoryStream<Path> breakdownDirectory(String path) {
@@ -102,6 +105,8 @@ public class Brain {
                 ((BrainClient) panel).setBrain(this);
             }
         }
+        this.contentDirectories = new ArrayList<>();
+        this.contentFiles = new ArrayList<>();
         history = new Stack<String>();
         rootDir = String.valueOf('/'); // Change this logic if extending this application to Windows or Mac.
         currentLocation = null;
