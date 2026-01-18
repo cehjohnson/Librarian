@@ -59,18 +59,33 @@ public class FileTreeArea extends JPanel implements BrainClient, ActionListener,
             vgroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(c));
             layout.setHorizontalGroup(hgroup);
             layout.setVerticalGroup(vgroup);
+            sizeLookIn();
             this.revalidate();
             this.repaint();
         });
     }
 
-    public static void setLabel(String t) {
-        label.setText(t);
-    }
-
     @Override
     public void setBrain(Brain brain) {
         this.brain = brain;
+    }
+
+    public void sizeLookIn() {
+        int iconWidth = label.getIcon().getIconWidth();
+        int labelWidth = label.getFontMetrics(label.getFont()).stringWidth(label.getText());
+        int availableWidth = label.getWidth() - iconWidth - 5;
+        String[] parts = label.getText().split("/");
+        StringBuilder resizer = new StringBuilder();
+
+        if (labelWidth <= availableWidth) {return;}
+
+        else if (parts.length < 2) {
+            label.setText(label.getText());
+            return;
+        }
+
+        resizer.append("/").append(parts[0]).append(parts[1]).append("..../");
+        label.setText(resizer.toString());
     }
 
    public void start() {

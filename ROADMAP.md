@@ -14,7 +14,6 @@ Display area.
 *The Brain does not need to know the difference between a folder and a file. This can take place at the component
 update() level.
 
-TODO: Add try block to FileTreeArea to make the LookIn label self-edit so it does not expand the FileTreeArea out beyond
-its designated area within the window.
+*Methods should be declared in alphabetical order in their corresponding object.
 
 TODO: Add typing input functionality to the Toolbar such that a user can look up a folder location that way.
