@@ -1,19 +1,32 @@
 package local.work.panels;
 
 import local.work.Brain;
+import local.work.datahandlers.DisplayParser;
+import local.work.datahandlers.WorkerOutputHandler;
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Path;
 
-public class DisplayArea extends JPanel implements BrainClient{
-    private static JLabel label;
+public class DisplayArea extends JPanel implements BrainClient, ActionListener, WorkerOutputHandler {
     private static Brain brain;
+    private static BoxLayout layout;
 
-    public static JLabel getLabel() {
-        return label;
+    @Override
+    public void actionPerformed(@NotNull ActionEvent ae) {
+        System.out.println("action performed");
     }
 
-    public static void setLabel(String t) {
-        label.setText(t);
+    @Override
+    public void handleParserOutput(JComponent c) {
+        SwingUtilities.invokeLater(() -> {
+            this.layout = new BoxLayout(this, BoxLayout.X_AXIS);
+            this.add(c);
+        });
     }
 
     @Override
@@ -21,20 +34,27 @@ public class DisplayArea extends JPanel implements BrainClient{
         this.brain = brain;
     }
 
+    public void start() {
+        DirectoryStream<Path> ds = brain.getContents();
+        if (ds != null) {
+            DisplayParser parser = new DisplayParser(ds, this, this);
+            parser.execute();
+        }
+    }
+
     @Override
     public void update() {}
 
     @Override
     public void update(String u) {
-        setLabel(u);
+        this.removeAll();
+
+        start();
     }
 
     public DisplayArea() {
         super();
         this.setBackground(Color.PINK);
-        DisplayArea.label = new JLabel("Display Area");
 
-        this.add(label);
-        label.setAlignmentY(0.5f);
     }
 }
