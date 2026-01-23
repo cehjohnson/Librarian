@@ -37,16 +37,6 @@ public class Brain {
         }
     }
 
-    public boolean isStreamOpen() {
-        try {
-            boolean hasNext = contents.iterator().hasNext();
-            return hasNext;
-        }
-        catch (Exception e) {
-            return false;
-        }
-    }
-
     public void publish(String string) {
         setCurrentLocation(string);
         if (history.empty()) {
