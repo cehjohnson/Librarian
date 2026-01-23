@@ -40,7 +40,9 @@ public class DisplayParser extends SwingWorker<Void, Path> {
 
     @Override
     protected void process(@NotNull List<Path> chunks) {
+        Dimension scP = new Dimension(600, 375);
         JPanel panel = new JPanel();
+        panel.setPreferredSize(scP);
         panel.setLayout(new FlowLayout());
         ArrayList<Path> directories = new ArrayList<Path>();
         ArrayList<Path> files = new ArrayList<Path>();
@@ -54,7 +56,7 @@ public class DisplayParser extends SwingWorker<Void, Path> {
         }
 
         for (Path d : directories) {
-            JButton dhyperable = new JButton();
+            JButton dhyperable = new JButton(d.getFileName().toString());
             ImageIcon icon = new ImageIcon("src/resources/close-folder.png");
             dhyperable.setIcon(icon);
             dhyperable.setActionCommand(d.getFileName().toString());
@@ -63,8 +65,8 @@ public class DisplayParser extends SwingWorker<Void, Path> {
         }
 
         for (Path f : files) {
-            JButton fhyperable = new JButton();
-            ImageIcon icon = new ImageIcon("src/resources/close-folder.png");
+            JButton fhyperable = new JButton(f.getFileName().toString());
+            ImageIcon icon = new ImageIcon("src/resources/file.png");
             fhyperable.setIcon(icon);
             fhyperable.setActionCommand(f.getFileName().toString());
             fhyperable.addActionListener(listener);
@@ -76,20 +78,19 @@ public class DisplayParser extends SwingWorker<Void, Path> {
                 JScrollPane.VERTICAL_SCROLLBAR_NEVER,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED
         );
-        Dimension scP = new Dimension(600, 375);
         scrollPane.setPreferredSize(scP);
         handler.handleParserOutput(scrollPane);
     }
 
-//    @Override
-//    protected void done() {
-//        try {
-//            if (brain.getContents() != null) {
-//                DirectoryStream<Path> ds = brain.getContents();
-//            }
-//        }
-//        catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @Override
+    protected void done() {
+        try {
+            if (brain.getContents() != null) {
+                DirectoryStream<Path> ds = brain.getContents();
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

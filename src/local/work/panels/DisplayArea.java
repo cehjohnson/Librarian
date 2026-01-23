@@ -14,7 +14,6 @@ import java.nio.file.Path;
 
 public class DisplayArea extends JPanel implements BrainClient, ActionListener, WorkerOutputHandler {
     private static Brain brain;
-    private static BoxLayout layout;
 
     @Override
     public void actionPerformed(@NotNull ActionEvent ae) {
@@ -23,9 +22,8 @@ public class DisplayArea extends JPanel implements BrainClient, ActionListener, 
 
     @Override
     public void handleParserOutput(JComponent c) {
-        System.out.println(c);
         SwingUtilities.invokeLater(() -> {
-            this.layout = new BoxLayout(this, BoxLayout.X_AXIS);
+            this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
             this.add(c);
             this.revalidate();
             this.repaint();

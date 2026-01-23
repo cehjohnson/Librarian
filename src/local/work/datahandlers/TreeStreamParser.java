@@ -65,15 +65,15 @@ public class TreeStreamParser extends SwingWorker<Void, Path> {
         handler.handleParserOutput(scrollPane);
     }
 
-//    @Override
-//    protected void done() {
-//        try {
-//            if (brain.getContents() != null) {
-//                DirectoryStream<Path> ds = brain.getContents();
-//            }
-//        }
-//        catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @Override
+    protected void done() {
+        try {
+            if (brain.getContents() != null) {
+                DirectoryStream<Path> ds = brain.getContents();
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
