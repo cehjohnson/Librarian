@@ -70,6 +70,7 @@ public class Toolbar extends JPanel implements BrainClient, ActionListener {
     @Override
     public void update(String u) {
         setAddressBar(u);
+        brain.setTarget(u, this);
     }
 
 

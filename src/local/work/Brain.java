@@ -1,6 +1,8 @@
 package local.work;
 
+import local.work.datahandlers.DisplayParser;
 import local.work.panels.BrainClient;
+import local.work.panels.DisplayArea;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -15,6 +17,7 @@ public class Brain {
 
     private static String rootDir;
     private static String currentLocation;
+    private static String target;
     private static Window window;
     private static JPanel[] panels;
     public static Stack<String> history;
@@ -52,6 +55,8 @@ public class Brain {
     public String getRootDir() {
         return rootDir;
     }
+
+    public String getTarget() { return target; }
 
     public void publish(String string) {
         setCurrentLocation(string);
@@ -92,6 +97,15 @@ public class Brain {
         Brain.currentLocation = currentLocation;
     }
 
+    public void setTarget(String t, BrainClient client) {
+        if (client instanceof DisplayArea) {
+            target = t;
+        }
+        else {
+            target = currentLocation;
+        }
+    }
+
     public Brain(@NotNull Window window) {
         this.window = window;
         this.panels = window.getPanels();
@@ -103,6 +117,7 @@ public class Brain {
         history = new Stack<String>();
         rootDir = String.valueOf('/'); // Change this logic if extending this application to Windows or Mac.
         currentLocation = null;
+        target = null;
         publish(rootDir);
     }
 }
