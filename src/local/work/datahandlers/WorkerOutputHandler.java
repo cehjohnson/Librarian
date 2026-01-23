@@ -3,5 +3,5 @@ package local.work.datahandlers;
 import javax.swing.*;
 
 public interface WorkerOutputHandler {
-    void handleParserOutput(JComponent scrollPane);
+    void handleParserOutput(JComponent jc);
 }

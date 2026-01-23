@@ -10,14 +10,23 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class DisplayArea extends JPanel implements BrainClient, ActionListener, WorkerOutputHandler {
     private static Brain brain;
 
     @Override
     public void actionPerformed(@NotNull ActionEvent ae) {
-        System.out.println("action performed");
+        String toBePassed = ae.getActionCommand();
+        String dest = makeDestination(toBePassed);
+        Path destination = Paths.get(dest);
+        if (Files.isDirectory(destination)) {
+            brain.publish(dest);
+        }
+        brain.setTarget(toBePassed, this);
+        System.out.println(brain.getTarget());
     }
 
     @Override
@@ -28,6 +37,17 @@ public class DisplayArea extends JPanel implements BrainClient, ActionListener, 
             this.revalidate();
             this.repaint();
         });
+    }
+
+    private @NotNull String makeDestination(String string) {
+        if (brain.getCurrentLocation().equals(brain.getRootDir())) {
+            String toReturn = brain.getCurrentLocation() + string;
+            return toReturn;
+        }
+        else {
+            String toReturn = brain.getCurrentLocation() + "/" + string;
+            return toReturn;
+        }
     }
 
     @Override
