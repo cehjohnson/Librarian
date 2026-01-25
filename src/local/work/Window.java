@@ -39,7 +39,7 @@ public class Window extends JPanel{
         };
 
 
-        Border border = BorderFactory.createLineBorder(Color.DARK_GRAY);
+        Border border = BorderFactory.createLineBorder(new Color(189, 204, 206));
         int[] rh = {125, 125, 125, 125, 125};
         int[] cw = {200, 200, 200, 200};
         GridBagLayout layout = new GridBagLayout();

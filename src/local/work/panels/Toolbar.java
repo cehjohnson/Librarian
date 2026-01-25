@@ -112,6 +112,6 @@ public class Toolbar extends JPanel implements BrainClient, ActionListener {
         this.add(rootBtn);
         this.add(homeBtn);
         this.add(addressBar);
-        this.setBackground(Color.RED);
+        this.setBackground(new Color(255, 250, 198));
     }
 }

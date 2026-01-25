@@ -108,6 +108,6 @@ public class FileTreeArea extends JPanel implements BrainClient, ActionListener,
     }
 
     public FileTreeArea() {
-        this.setBackground(Color.YELLOW);
+        this.setBackground(new Color(255, 250, 198));
     }
 }

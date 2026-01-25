@@ -47,6 +47,6 @@ public class PropertiesArea extends JPanel implements BrainClient, WorkerOutputH
     public PropertiesArea() {
         super();
 
-        this.setBackground(Color.YELLOW);
+        this.setBackground(new Color(255, 250, 198));
     }
 }

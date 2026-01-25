@@ -79,6 +79,7 @@ public class DisplayParser extends SwingWorker<Void, Path> {
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED
         );
         scrollPane.setPreferredSize(scP);
+        scrollPane.getViewport().getView().setBackground(new Color(255, 250, 198));
         handler.handleParserOutput(scrollPane);
     }
 
