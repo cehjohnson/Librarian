@@ -74,6 +74,10 @@ public class Toolbar extends JPanel implements BrainClient, ActionListener {
         brain.setTarget(u, this);
     }
 
+    public void takeInput() {
+        // This will be the function for the address bar to take input and submit for a publishing check.
+    }
+
 
     public Toolbar() {
         super();
