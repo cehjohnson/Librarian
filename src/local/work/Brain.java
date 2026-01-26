@@ -4,6 +4,7 @@ import local.work.datahandlers.DisplayParser;
 import local.work.datahandlers.PropertiesParser;
 import local.work.panels.BrainClient;
 import local.work.panels.DisplayArea;
+import local.work.panels.FileTreeArea;
 import local.work.panels.PropertiesArea;
 import org.jetbrains.annotations.NotNull;
 

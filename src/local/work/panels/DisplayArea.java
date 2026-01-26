@@ -21,11 +21,11 @@ public class DisplayArea extends JPanel implements BrainClient, ActionListener, 
     public void actionPerformed(@NotNull ActionEvent ae) {
         String toBePassed = ae.getActionCommand();
         String dest = makeDestination(toBePassed);
+        brain.setTarget(dest, this);
         Path destination = Paths.get(dest);
         if (Files.isDirectory(destination)) {
             brain.publish(dest);
         }
-        brain.setTarget(dest, this);
     }
 
     @Override

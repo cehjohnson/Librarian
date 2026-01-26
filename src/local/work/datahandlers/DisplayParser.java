@@ -57,22 +57,24 @@ public class DisplayParser extends SwingWorker<Void, Path> {
         }
 
         for (Path d : directories) {
+            System.out.println("Folder " + d.getFileName().toString());
             JButton dhyperable = new JButton(d.getFileName().toString());
+            dhyperable.setMaximumSize(new Dimension(50, 40));
             ImageIcon icon = new ImageIcon("src/resources/close-folder.png");
             dhyperable.setIcon(icon);
             dhyperable.setActionCommand(d.getFileName().toString());
             dhyperable.addActionListener(listener);
-            dhyperable.setMaximumSize(new Dimension(50, 40));
             panel.add(dhyperable);
         }
 
         for (Path f : files) {
+            System.out.println("File " + f.getFileName().toString());
             JButton fhyperable = new JButton(f.getFileName().toString());
+            fhyperable.setMaximumSize(new Dimension(50, 40));
             ImageIcon icon = new ImageIcon("src/resources/file.png");
             fhyperable.setIcon(icon);
             fhyperable.setActionCommand(f.getFileName().toString());
             fhyperable.addActionListener(listener);
-            fhyperable.setMaximumSize(new Dimension(50, 40));
             panel.add(fhyperable);
         }
 
@@ -83,7 +85,6 @@ public class DisplayParser extends SwingWorker<Void, Path> {
         );
         scrollPane.setPreferredSize(scP);
         scrollPane.getViewport().getView().setBackground(new Color(255, 250, 198));
-//        panel.setPreferredSize(new Dimension(1200, (int)(Math.ceil((directories.size() + files.size()) / 3.0) * 50)));
         handler.handleParserOutput(scrollPane);
     }
 
