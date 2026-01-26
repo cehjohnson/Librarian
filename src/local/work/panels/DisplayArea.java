@@ -71,7 +71,6 @@ public class DisplayArea extends JPanel implements BrainClient, ActionListener, 
 
     public DisplayArea() {
         super();
-        this.setBackground(Color.PINK);
 
     }
 }

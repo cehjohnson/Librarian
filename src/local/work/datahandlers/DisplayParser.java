@@ -4,6 +4,7 @@ import local.work.Brain;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class DisplayParser extends SwingWorker<Void, Path> {
         Dimension scP = new Dimension(600, 375);
         JPanel panel = new JPanel();
         panel.setPreferredSize(scP);
-        panel.setLayout(new FlowLayout());
+        panel.setLayout(new GridLayout(7, 3, 50, 10));
         ArrayList<Path> directories = new ArrayList<Path>();
         ArrayList<Path> files = new ArrayList<Path>();
         for (Path p : chunks) {
@@ -61,6 +62,7 @@ public class DisplayParser extends SwingWorker<Void, Path> {
             dhyperable.setIcon(icon);
             dhyperable.setActionCommand(d.getFileName().toString());
             dhyperable.addActionListener(listener);
+            dhyperable.setMaximumSize(new Dimension(50, 40));
             panel.add(dhyperable);
         }
 
@@ -70,6 +72,7 @@ public class DisplayParser extends SwingWorker<Void, Path> {
             fhyperable.setIcon(icon);
             fhyperable.setActionCommand(f.getFileName().toString());
             fhyperable.addActionListener(listener);
+            fhyperable.setMaximumSize(new Dimension(50, 40));
             panel.add(fhyperable);
         }
 
@@ -80,6 +83,7 @@ public class DisplayParser extends SwingWorker<Void, Path> {
         );
         scrollPane.setPreferredSize(scP);
         scrollPane.getViewport().getView().setBackground(new Color(255, 250, 198));
+//        panel.setPreferredSize(new Dimension(1200, (int)(Math.ceil((directories.size() + files.size()) / 3.0) * 50)));
         handler.handleParserOutput(scrollPane);
     }
 
