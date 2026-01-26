@@ -56,7 +56,6 @@ public class DisplayParser extends SwingWorker<Void, Path> {
         }
 
         for (Path d : directories) {
-            System.out.println("Folder " + d.getFileName().toString());
             JButton dhyperable = new JButton(d.getFileName().toString());
             dhyperable.setPreferredSize(new Dimension(120, 40));
             ImageIcon icon = new ImageIcon("src/resources/close-folder.png");
@@ -67,7 +66,6 @@ public class DisplayParser extends SwingWorker<Void, Path> {
         }
 
         for (Path f : files) {
-            System.out.println("File " + f.getFileName().toString());
             JButton fhyperable = new JButton(f.getFileName().toString());
             fhyperable.setPreferredSize(new Dimension(120, 40));
             ImageIcon icon = new ImageIcon("src/resources/file.png");
