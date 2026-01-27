@@ -64,7 +64,7 @@ public class PropertiesParser extends SwingWorker<Path, Void> {
                 Dimension d = new Dimension(800, 125);
                 JPanel panel = new JPanel();
                 panel.setPreferredSize(d);
-                panel.setLayout(new FlowLayout());
+                panel.setLayout(new GridLayout(2, 2, 200, 10));
                 panel.setBackground(new Color(255, 250, 198));
 
                 panel.add(name);
