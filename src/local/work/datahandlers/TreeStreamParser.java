@@ -48,7 +48,7 @@ public class TreeStreamParser extends SwingWorker<Void, Path> {
             if (Files.isDirectory(p)) {
                 JButton hyperable = new JButton(p.getFileName().toString());
                 hyperable.setBackground(new Color(255, 253, 242));
-                ImageIcon icon = new ImageIcon("src/resources/close-folder.png");
+                ImageIcon icon = new ImageIcon("src/local/work/resources/close-folder.png");
                 hyperable.setIcon(icon);
                 hyperable.setMargin(m);
                 hyperable.setActionCommand(p.getFileName().toString());

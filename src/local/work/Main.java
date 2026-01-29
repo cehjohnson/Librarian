@@ -15,7 +15,7 @@ public class Main {
         Brain brain = new Brain(window, frame);
 
         try {
-            BufferedImage icon = ImageIO.read(new File("src/resources/book-logo.png"));
+            BufferedImage icon = ImageIO.read(new File("src/local/work/resources/book-logo.png"));
             Image rIcon = icon.getScaledInstance(32, 32, Image.SCALE_SMOOTH);
             frame.setIconImage(rIcon);
         }
