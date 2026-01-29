@@ -1,4 +1,4 @@
-package local.work.datahandlers;
+package main.local.work.datahandlers;
 
 import javax.swing.*;
 

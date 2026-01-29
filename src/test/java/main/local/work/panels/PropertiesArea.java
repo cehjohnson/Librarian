@@ -1,13 +1,11 @@
-package local.work.panels;
+package main.local.work.panels;
 
-import local.work.Brain;
-import local.work.datahandlers.PropertiesParser;
-import local.work.datahandlers.WorkerOutputHandler;
+import main.local.work.Brain;
+import main.local.work.datahandlers.PropertiesParser;
+import main.local.work.datahandlers.WorkerOutputHandler;
 
 import javax.swing.*;
 import java.awt.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class PropertiesArea extends JPanel implements BrainClient, WorkerOutputHandler {
     private static Brain brain;

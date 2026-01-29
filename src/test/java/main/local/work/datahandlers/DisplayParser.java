@@ -1,13 +1,11 @@
-package local.work.datahandlers;
+package main.local.work.datahandlers;
 
-import local.work.Brain;
+import main.local.work.Brain;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -60,7 +58,7 @@ public class DisplayParser extends SwingWorker<Void, Path> {
             JButton dhyperable = new JButton(d.getFileName().toString());
             dhyperable.setBackground(new Color(255, 253, 242));
             dhyperable.setPreferredSize(new Dimension(120, 40));
-            ImageIcon icon = new ImageIcon("src/local/work/resources/close-folder.png");
+            ImageIcon icon = new ImageIcon(getClass().getResource("/close-folder.png"));
             dhyperable.setIcon(icon);
             dhyperable.setActionCommand(d.getFileName().toString());
             dhyperable.addActionListener(listener);
@@ -71,7 +69,7 @@ public class DisplayParser extends SwingWorker<Void, Path> {
             JButton fhyperable = new JButton(f.getFileName().toString());
             fhyperable.setBackground(new Color(255, 253, 242));
             fhyperable.setPreferredSize(new Dimension(120, 40));
-            ImageIcon icon = new ImageIcon("src/local/work/resources/file.png");
+            ImageIcon icon = new ImageIcon(getClass().getResource("/file.png"));
             fhyperable.setIcon(icon);
             fhyperable.setActionCommand(f.getFileName().toString());
             fhyperable.addActionListener(listener);

@@ -1,15 +1,13 @@
-package local.work.panels;
+package main.local.work.panels;
 
-import local.work.Brain;
-import local.work.datahandlers.DisplayParser;
-import local.work.datahandlers.WorkerOutputHandler;
+import main.local.work.Brain;
+import main.local.work.datahandlers.DisplayParser;
+import main.local.work.datahandlers.WorkerOutputHandler;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;

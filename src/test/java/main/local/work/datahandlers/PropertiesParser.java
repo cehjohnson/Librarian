@@ -1,6 +1,6 @@
-package local.work.datahandlers;
+package main.local.work.datahandlers;
 
-import local.work.Brain;
+import main.local.work.Brain;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -8,7 +8,6 @@ import java.awt.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
 public class PropertiesParser extends SwingWorker<Path, Void> {
 

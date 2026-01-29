@@ -1,16 +1,14 @@
-package local.work.panels;
+package main.local.work.panels;
 
-import local.work.Brain;
-import local.work.datahandlers.WorkerOutputHandler;
-import local.work.datahandlers.TreeStreamParser;
+import main.local.work.Brain;
+import main.local.work.datahandlers.WorkerOutputHandler;
+import main.local.work.datahandlers.TreeStreamParser;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Path;
 
 public class FileTreeArea extends JPanel implements BrainClient, ActionListener, WorkerOutputHandler {
     private static JLabel label;
@@ -100,7 +98,7 @@ public class FileTreeArea extends JPanel implements BrainClient, ActionListener,
     @Override
     public void update(String u) {
         this.removeAll();
-        ImageIcon icon = new ImageIcon("src/local/work/resources/open-folder.png");
+        ImageIcon icon = new ImageIcon("/open-folder.png");
         this.label = new JLabel(u);
         label.setIcon(icon);
         label.setHorizontalAlignment(SwingConstants.LEFT);

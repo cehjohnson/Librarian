@@ -1,11 +1,8 @@
-package local.work;
+package main.local.work;
 
-import local.work.datahandlers.DisplayParser;
-import local.work.datahandlers.PropertiesParser;
-import local.work.panels.BrainClient;
-import local.work.panels.DisplayArea;
-import local.work.panels.FileTreeArea;
-import local.work.panels.PropertiesArea;
+import main.local.work.panels.BrainClient;
+import main.local.work.panels.DisplayArea;
+import main.local.work.panels.PropertiesArea;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -14,7 +11,6 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Stack;
 
 public class Brain {

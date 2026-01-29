@@ -1,6 +1,6 @@
-package local.work.panels;
+package main.local.work.panels;
 
-import local.work.Brain;
+import main.local.work.Brain;
 
 public interface BrainClient {
     void update();

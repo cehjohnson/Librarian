@@ -1,12 +1,11 @@
-package local.work.datahandlers;
+package main.local.work.datahandlers;
 
-import local.work.Brain;
+import main.local.work.Brain;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -48,7 +47,7 @@ public class TreeStreamParser extends SwingWorker<Void, Path> {
             if (Files.isDirectory(p)) {
                 JButton hyperable = new JButton(p.getFileName().toString());
                 hyperable.setBackground(new Color(255, 253, 242));
-                ImageIcon icon = new ImageIcon("src/local/work/resources/close-folder.png");
+                ImageIcon icon = new ImageIcon(getClass().getResource("/close-folder.png"));
                 hyperable.setIcon(icon);
                 hyperable.setMargin(m);
                 hyperable.setActionCommand(p.getFileName().toString());

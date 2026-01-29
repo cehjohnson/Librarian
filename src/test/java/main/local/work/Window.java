@@ -1,9 +1,9 @@
-package local.work;
+package main.local.work;
 
-import local.work.panels.DisplayArea;
-import local.work.panels.FileTreeArea;
-import local.work.panels.PropertiesArea;
-import local.work.panels.Toolbar;
+import main.local.work.panels.DisplayArea;
+import main.local.work.panels.FileTreeArea;
+import main.local.work.panels.PropertiesArea;
+import main.local.work.panels.Toolbar;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,6 +1,6 @@
-package local.work.panels;
+package main.local.work.panels;
 
-import local.work.Brain;
+import main.local.work.Brain;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -107,25 +107,25 @@ public class Toolbar extends JPanel implements BrainClient, ActionListener {
 
         Toolbar.iconSize = new Dimension(32, 32);
 
-        Toolbar.homeIcon = new ImageIcon(getClass().getResource("../resources/home-2504.png"));
+        Toolbar.homeIcon = new ImageIcon(getClass().getResource("/home-2504.png"));
         Toolbar.homeIcon = setIconSize(Toolbar.homeIcon);
         Toolbar.homeBtn = new JButton(Toolbar.homeIcon);
         Toolbar.homeBtn.setPreferredSize(Toolbar.iconSize);
         Toolbar.homeBtn.addActionListener(this);
 
-        Toolbar.refreshIcon = new ImageIcon(getClass().getResource("../resources/recycle.png"));
+        Toolbar.refreshIcon = new ImageIcon(getClass().getResource("/recycle.png"));
         Toolbar.refreshIcon = setIconSize(Toolbar.refreshIcon);
         Toolbar.refreshBtn = new JButton(Toolbar.refreshIcon);
         Toolbar.refreshBtn.setPreferredSize(Toolbar.iconSize);
         Toolbar.refreshBtn.addActionListener(this);
 
-        Toolbar.rootIcon = new ImageIcon(getClass().getResource("../resources/admin-9580.png"));
+        Toolbar.rootIcon = new ImageIcon(getClass().getResource("/admin-9580.png"));
         Toolbar.rootIcon = setIconSize(Toolbar.rootIcon);
         Toolbar.rootBtn = new JButton(Toolbar.rootIcon);
         Toolbar.rootBtn.setPreferredSize(iconSize);
         Toolbar.rootBtn.addActionListener(this);
 
-        Toolbar.backIcon = new ImageIcon(getClass().getResource("../resources/back.png"));
+        Toolbar.backIcon = new ImageIcon(getClass().getResource("/back.png"));
         Toolbar.backIcon = setIconSize(Toolbar.backIcon);
         Toolbar.backBtn = new JButton(Toolbar.backIcon);
         Toolbar.backBtn.setPreferredSize(iconSize);
