@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class Toolbar extends JPanel implements BrainClient, ActionListener {
     private static JButton homeBtn;
@@ -29,9 +30,19 @@ public class Toolbar extends JPanel implements BrainClient, ActionListener {
     @Override
     public void actionPerformed(@NotNull ActionEvent e) {
         if (e.getSource() == homeBtn) {
-            String home = new String("~");
-            brain.history.push(brain.getCurrentLocation());
-            brain.publish(home);
+            String homeIndex = new String("");
+            ArrayList<Path> annex = new ArrayList<Path>();
+            var root = brain.breakdownDirectory(brain.getRootDir());
+            for (Path p : root) {
+                if (p.toString().equals("/home")) {
+                    homeIndex = p.toString();
+                }
+            }
+            var home = brain.breakdownDirectory(homeIndex);
+            for (Path q : home) {
+                annex.add(q);
+            }
+            brain.publish(annex.get(1).toString());
         }
         else if (e.getSource() == rootBtn) {
             brain.history.push(brain.getCurrentLocation());
