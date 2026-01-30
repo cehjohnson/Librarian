@@ -1,0 +1,86 @@
+package main.local.work;
+
+import main.local.work.panels.DisplayArea;
+import main.local.work.panels.FileTreeArea;
+import main.local.work.panels.PropertiesArea;
+import main.local.work.panels.Toolbar;
+
+import javax.swing.*;
+import java.awt.*;
+import javax.swing.border.Border;
+
+public class Window extends JPanel{
+
+    public JPanel[] getPanels() {
+        return panels;
+    }
+
+    public Toolbar getToolbar() {
+        return toolbar;
+    }
+
+    private Toolbar toolbar;
+    private DisplayArea displayArea;
+    private FileTreeArea fileTreeArea;
+    private PropertiesArea propertiesArea;
+    private JPanel[] panels;
+
+    public Window() {
+        toolbar = new Toolbar();
+        fileTreeArea = new FileTreeArea();
+        displayArea = new DisplayArea();
+        propertiesArea = new PropertiesArea();
+
+        this.panels = new JPanel[] {
+                toolbar,
+                displayArea,
+                fileTreeArea,
+                propertiesArea
+        };
+
+
+        Border border = BorderFactory.createLineBorder(new Color(189, 204, 206));
+        int[] rh = {125, 125, 125, 125, 125};
+        int[] cw = {200, 200, 200, 200};
+        GridBagLayout layout = new GridBagLayout();
+        layout.rowHeights = rh;
+        layout.columnWidths = cw;
+        this.setLayout(layout);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.weightx = 0.5;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.fill = GridBagConstraints.BOTH;
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 4;
+        gbc.gridheight = 1;
+        this.add(toolbar, gbc);
+
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.anchor = GridBagConstraints.NORTHWEST;
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 3;
+        this.add(fileTreeArea, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.gridwidth = 3;
+        gbc.gridheight = 3;
+        this.add(displayArea, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.gridwidth = 4;
+        gbc.gridheight = 1;
+        this.add(propertiesArea, gbc);
+
+        for (JPanel panel: panels) {
+            panel.setBorder(border);
+        }
+    }
+}
